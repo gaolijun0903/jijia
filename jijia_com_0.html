@@ -305,6 +305,7 @@
         var MineIndex = 0;
         var jsjMax = [0,0];
         var jsjIndex = [];
+        var vueCarType='';
 
         if(product == 'asap' || product == 'yy' || product == 'sz') {
             product = 'asap'
@@ -358,7 +359,7 @@
                 }
                 makeswipter(vueData)
             }
-
+			console.log(vueCarType)
             var carCont = new Vue({
                 el: '#app',
                 data : {

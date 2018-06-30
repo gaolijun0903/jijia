@@ -56,7 +56,7 @@
 
         .newLife { position: absolute; top:0; left:0; width:100%; z-index: 9999;}
     </style>
-    <script type="text/javascript" src='<{asset:js/jquery.js}>'></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js'></script>
     <script type="text/javascript" src='https://cdn.bootcss.com/vue/2.5.16/vue.min.js'></script>
 </head>
@@ -172,31 +172,34 @@
 
                 </div>
             </template>
-
-            <dt class="other padding"><hr/><span>其他费用</span></dt>
-
-            <dt>议价费用</dt>
-            <dd class="cont padding">根据用车需求的不同时段，乘客可以选择对该订单进行加价或减价，在用车高峰时段或者遇到特殊天气，司机较少，对订单加价，鼓励司机更快接单；在非高峰期时段，司机较多，对订单减价，节约乘客的出行成本。</dd>
-
-            <dt>高速费</dt>
-            <dd class="cont padding">在高速公路（包括机场高速）行驶所产生的费用，由各地高速路管理部门收取。</dd>
-
-            <dt>停车费</dt>
-            <dd class="cont padding">司机按约定时间到达后因等待乘客上车而产生的泊车费用，按实际发生费用收取。</dd>
-
-            <template v-if="is_segment=='0'">
-                <dt class="cont ">夜间服务费</dt>
-                <dd class="cont padding">23:00至次日5:00之间的用车，需要收取夜间服务费，易达车型0.5元/分钟、舒适、商务、豪华1元/分钟。</dd>
-            </template>
-
-            <dt>超时费用</dt>
-            <dd class="cont padding">除海口、三亚、厦门以外的城市，时租服务超出30分钟、接送机、日租、半日租服务超出套餐部分时长，则按照实际用车时长加收超时费用。</dd>
-
-            <dt>取消订单费用</dt>
-            <dd class="cont max">日租、半日租订单，距服务开始1小时之前（包括1小时）取消订单，不收取任何费用；距服务开始1小时之内取消订单，需要支付套餐全额。
-                时租、接送机订单（填写航班号除外）、接送站订单，下单后，司机到达后按约定时间免费等待10分钟；接机服务中，填写航班信息的订单，将按照飞机抵达时间为准，如遇飞机延误情况，司机将免费等待至飞机抵达
-                若用户在10分钟内未用车且未主动取消订单，司机与客服都无法联系到乘客的情况下，订单将会被强制取消，并扣取起步价金额，未绑卡的用户或余额不足的用户将会被冻结，待充值或验证信用卡补足欠款后，自动解冻。</dd>
-           
+			
+			<div class="otherwrapper">
+				<dt class="other padding"><hr/><span>其他费用</span></dt>
+				
+	            <dt>议价费用</dt>
+	            <dd class="cont padding">根据用车需求的不同时段，乘客可以选择对该订单进行加价或减价，在用车高峰时段或者遇到特殊天气，司机较少，对订单加价，鼓励司机更快接单；在非高峰期时段，司机较多，对订单减价，节约乘客的出行成本。</dd>
+	
+	            <dt>高速费</dt>
+	            <dd class="cont padding">在高速公路（包括机场高速）行驶所产生的费用，由各地高速路管理部门收取。</dd>
+	
+	            <dt>停车费</dt>
+	            <dd class="cont padding">司机按约定时间到达后因等待乘客上车而产生的泊车费用，按实际发生费用收取。</dd>
+	
+	            <template v-if="is_segment=='0'">
+	                <dt class="cont ">夜间服务费</dt>
+	                <dd class="cont padding">23:00至次日5:00之间的用车，需要收取夜间服务费，易达车型0.5元/分钟、舒适、商务、豪华1元/分钟。</dd>
+	            </template>
+	
+	            <dt>超时费用</dt>
+	            <dd class="cont padding">除海口、三亚、厦门以外的城市，时租服务超出30分钟、接送机、日租、半日租服务超出套餐部分时长，则按照实际用车时长加收超时费用。</dd>
+	
+	            <dt>取消订单费用</dt>
+	            <dd class="cont max">日租、半日租订单，距服务开始1小时之前（包括1小时）取消订单，不收取任何费用；距服务开始1小时之内取消订单，需要支付套餐全额。
+	                时租、接送机订单（填写航班号除外）、接送站订单，下单后，司机到达后按约定时间免费等待10分钟；接机服务中，填写航班信息的订单，将按照飞机抵达时间为准，如遇飞机延误情况，司机将免费等待至飞机抵达
+	                若用户在10分钟内未用车且未主动取消订单，司机与客服都无法联系到乘客的情况下，订单将会被强制取消，并扣取起步价金额，未绑卡的用户或余额不足的用户将会被冻结，待充值或验证信用卡补足欠款后，自动解冻。</dd>
+	           
+			</div>
+	            
         </dl>
     </div>
 </div>
@@ -214,8 +217,8 @@
             var carId = location.hash.slice(1).split('_')[3];
     }
    
-    //url = 'https://h5.yongche.com/ajax/Valuation/getFeeByCity';
-    url = 'https://testing-h5.yongche.Org/ajax/Valuation/getFeeByCity';
+    url = 'https://h5.yongche.com/ajax/Valuation/getFeeByCity';
+   // url = 'https://testing-h5.yongche.Org/ajax/Valuation/getFeeByCity';
 //37（易达）\ 5(商务)\2（舒适）\3（豪华）
     if(carId == 79) {
         carId = 37;
@@ -238,11 +241,11 @@
         }
         console.log(data.result)
         if(product == "asap"||product == "yy") {
-            for(var i in data.result){
-                data.result[i].default.price.forEach(function(e,index) {//普通工作日
+            for(var i in data.result){ //遍历当前服务类型
+                data.result[i].price.forEach(function(e,index) {//普通工作日
                     if(e['78']){//去掉租出车
-                        //data.result[i].price.splice(index,1);
-                        data.result[i].price.default.splice(index,1);
+                        data.result[i].price.splice(index,1);
+                        //data.result[i].price.default.splice(index,1);
                         return;
                     }
                 });
@@ -294,15 +297,15 @@
                     var ix = 0;
                     for(var j in vueData[i]['price']) { ix++;}  //总共3个车型
                     if(jsjMax[0] < ix) { 
-                    	jsjMax[0] = ix; //车型数
-                    	jsjMax[1] = i; //机场数
+	                    	jsjMax[0] = ix; //车型数
+	                    	jsjMax[1] = i; //机场数
                     }
                 }
                 for(var i in vueData) {//遍历机场数组
                     if(i == jsjMax[1]){//最后一个机场
-                    	for(var j in vueData[i]['price']) {
-                    		jsjIndex.push(j);
-                    	}
+	                    	for(var j in vueData[i]['price']) {
+	                    		jsjIndex.push(j);
+	                    	}
                     }
                 }
             } else if(product == 'rm') {//热门线路--目前只有一个（凤凰汇专线）
@@ -311,47 +314,46 @@
                     rmName =  data.result[i].name;
                 }
             } else {
-                vueData = data.result[carTypeJson[product]['carTypeIndex'][0]]['price'];
+                vueData = data.result[carTypeJson[product]['carTypeIndex'][0]]['price']; //TODO 这里区分出马上用车
             }
 
-            if(product == 'jsj') {
+            if(product == 'jsj') {//接送机
                 for(var i in vueData[jsjMax[1]]['price'][jsjIndex[0]]) {
                     vueCarType = vueData[jsjMax[1]]['price'][jsjIndex[0]][i];
                 }
                 makeswipter(vueData[jsjMax[1]]['price']);
             } else {
-
-                for(var i in vueData) {
-                    for(var j in vueData[i]) {
-                        if(carId) {
-                            if(j == carId) {
-                               vueCarType = vueData[i][carId];
+            		vueData.forEach(function(obj,idx){//遍历该服务类型下支持的车型数组
+            			for(var k in obj) {//车型对象的key值只有一个，就是车型ID, 循环只进行一次
+                        if(carId) {//如果URL的hash值包含车型ID即carId
+                            if(k == carId) { //vue需要展示的对应车型的数据，就是key值等于carId的那条
+                               vueCarType = obj[carId]; //vueCarType->就是vue需要展示的对应车型的数据,分时段数组
                             }
-                        } else {
-                            if(i == 0) {vueCarType = vueData[i][j]}
+                        } else {//如果URL的hash值没有指定车型，就选第一个车型数据来展示
+                            if(idx == 0) {vueCarType = vueData[0][k]}
                         }
                     }
-                }
-                makeswipter(vueData)
+            		})
+                makeswipter(vueData); //用车型数组数据，构造轮播图
             }
 
             var carCont = new Vue({
                 el: '#app',
                 data : {
-                    title1 : carTypeJson[product]['title'].split(',')[0],
-                    title2 : carTypeJson[product]['title'].split(',')[1],
+                    title1 : carTypeJson[product]['title'].split(',')[0],//“马上用车”，“接机”，“日租”
+                    title2 : carTypeJson[product]['title'].split(',')[1],//“预约用车”，“送机”，“半日租”
 
-                    cont1 : carTypeJson[product]['cont'].split(',')[0],
-                    cont2 : carTypeJson[product]['cont'].split(',')[1],
+                    cont1 : carTypeJson[product]['cont'].split(',')[0], //“里程费”or“超出套餐里程费”
+                    cont2 : carTypeJson[product]['cont'].split(',')[1], //“时长费”or“超出套餐时长费”
 
-                    count_join1 : false,
-                    count_join2 : false,
-                    count_join3 : false,
+                    count_join1 : false, //里程费是否分时段，false不分段
+                    count_join2 : false, //时长费是否分时段，false不分段
+                    count_join3 : false, //长途费是否分时段，false不分段
 
-                    product : product,
-                    name : '',
-                    brand_desc : '',
-                    is_segment : 0,
+                    product : product, //服务类型（asap\jsj\rz）
+                    name : '', //轮播位置展示的车型分类：易达、舒适、豪华、商务
+                    brand_desc : '', //轮播位置展示的具体车型：易达（大众速腾,丰田卡罗拉,大众朗逸）商务（别克GL8）
+                    is_segment : 0, //是否是普通时段，0-普通，1-分时段
 
                     other : '',
 
@@ -359,8 +361,8 @@
 
                     jsj : [], //接送机专享
 
-                    distance : '',
-                    time_length : '',
+                    distance : '', //时租-最低消费-535元（包含100公里8小时）
+                    time_length : '',//时租-最低消费-535元（包含100公里8小时）
 
                     p : '普通时段',
                     t : '',
@@ -401,7 +403,7 @@
 
             if(product != 'asap') {
                 $('dl dt').eq(0).addClass('cont padding');
-            }////////////////////////
+            }
 
             setTimeout(function() {
                 mySwiper = new Swiper('.swiper-container', {
@@ -411,23 +413,20 @@
                     },
                     on: {
                         slideChangeTransitionEnd: function(event){
-                            //Swiper初始化了
-                            MineIndex = this.activeIndex
-                            var j = 0;
+                            MineIndex = this.activeIndex; //轮播图当前索引
                             var vueCarContent;
-                            if(product == 'jsj') {
-                                MineIndex = MineIndex;
-                                vueCarContent = vueData;
-                            } else {
-                                for(var i in vueData) {
-                                    if( j++ == MineIndex) {
-                                        for(var x in vueData[i]) {
-                                            vueCarContent = vueData[i][x];
-                                        }
-                                    }
-                                }
-                                j = 0;
-                            }
+	                        if(product == 'jsj') {
+	                            MineIndex = MineIndex;
+	                            vueCarContent = vueData;
+	                        } else {
+	                        		vueData.forEach(function(ele,idx){//遍历当前服务类型下支持的车型数组
+	                        			if(idx==MineIndex){
+	                        				for(var k in ele) {//遍历轮播图的索引对应的车型数据对象，只有一个key即车型id
+	                                        vueCarContent = ele[k];//车型数据的分时段数据的数组
+	                                    }
+	                        			}
+	                        		})
+	                        }
                             changContent(vueCarContent)
                         },
                         
@@ -436,22 +435,20 @@
             },0)
             setTimeout(function() {
                 if(carId) {
-                   var index = $("#" + carId).index();
-                   if(index == 0) {
-                        var j = 0;
+                   var index = $("#" + carId).index(); //URL指定车型在轮播图中的位置索引
+                   if(index == 0) {//指定车型就是第一个轮播图
                         var vueCarContent;
                         if(product == 'jsj') {
                             MineIndex = MineIndex;
                             vueCarContent = vueData;
                         } else {
-                            for(var i in vueData) {
-                                if( j++ == MineIndex) {
-                                    for(var x in vueData[i]) {
-                                        vueCarContent = vueData[i][x];
+                        		vueData.forEach(function(ele,idx){//遍历当前服务类型下支持的车型数组
+                        			if(idx==MineIndex){
+                        				for(var k in ele) {//遍历轮播图的索引对应的车型数据对象，只有一个key即车型id
+                                        vueCarContent = ele[k];//车型数据的分时段数据的数组
                                     }
-                                }
-                            }
-                            j = 0;
+                        			}
+                        		})
                         }
                         changContent(vueCarContent)
                    } else {mySwiper.slideTo(index,0)}
@@ -464,19 +461,18 @@
                 } else {
                     vueData = data.result[carTypeJson[product]['carTypeIndex'][$(this).index()]]['price'];
                 }
-                var n = 0;
-                for(var i in vueData) {
-                    if(n++ == MineIndex) {
-                        for(var j in vueData[i]) {
-                            vueCarType = vueData[i][j]; 
+                vueData.forEach(function(ele,idx){//遍历当前服务类型下支持的车型数组
+            			if(idx==MineIndex){
+            				for(var k in ele) {//遍历轮播图的索引对应的车型数据对象，只有一个key即车型id
+                            vueCarType = ele[k];//车型数据的分时段数据的数组
                         }
-                    }
-                }
-                //MineIndex
+            			}
+            		})
+
                 product == 'jsj' ? changContent(vueData) : changContent(vueCarType)
             })
 
-            function changContent(vueCarContent) {
+            function changContent(vueCarContent) {//更改计费内容，参数：某车型的分时段数组
                 // var MineIndex
                 if(product == 'jsj') {
                     carCont.jsj = [];
@@ -508,27 +504,26 @@
 
                     //初始化分段值
                     carCont['listKli'] = [];
-                    carCont['listlistLongKli'] = [];
                     carCont['listLong'] = [];
                     carCont['listDeadhead'] = [];
-                    if(vueCarContent.length != 1) {
+                    if(vueCarContent.length != 1) {//分时段计费
                         carCont.is_segment = 1
-                        for(var i in vueCarContent) {
-                            if(i != 0) {
-                                carCont['listKli'].push({'kliPrice':vueCarContent[i]['fee_per_kilometer']/100,'kliTime':showTime(vueCarContent[i]['segment_time_start']) + ' - ' +  showTime(vueCarContent[i]['segment_time_end'])})
+                        vueCarContent.forEach(function(segmentObj,idx){
+                        		if(idx != 0) {
+                                carCont['listKli'].push({'kliPrice':segmentObj['fee_per_kilometer']/100,'kliTime':showTime(segmentObj['segment_time_start']) + ' - ' +  showTime(segmentObj['segment_time_end'])});
 
-                                carCont['listLong'].push({'kliPrice':vueCarContent[i]['fee_per_minute']/100,'kliTime':showTime(vueCarContent[i]['segment_time_start']) + ' - ' +  showTime(vueCarContent[i]['segment_time_end'])})
+                                carCont['listLong'].push({'kliPrice':segmentObj['fee_per_minute']/100,'kliTime':showTime(segmentObj['segment_time_start']) + ' - ' +  showTime(segmentObj['segment_time_end'])});
 
-                                carCont['listDeadhead'].push({'kliPrice':vueCarContent[i]['fee_per_deadhead_kilometer']/100,'kliTime':showTime(vueCarContent[i]['segment_time_start']) + ' - ' +  showTime(vueCarContent[i]['segment_time_end'])})
+                                carCont['listDeadhead'].push({'kliPrice':segmentObj['fee_per_deadhead_kilometer']/100,'kliTime':showTime(segmentObj['segment_time_start']) + ' - ' +  showTime(segmentObj['segment_time_end'])});
                             }
-                        }
+                        })
                         if(product == 'asap') {
                             carCont.joinPrice(carCont['listKli'],'count_join1','fee_per_kilometer');
                             carCont.joinPrice(carCont['listLong'],'count_join2','fee_per_minute');
                             carCont.joinPrice(carCont['listDeadhead'],'count_join3','fee_per_deadhead_kilometer');
                         }
 
-                    } else {
+                    } else {//不分时段
                         carCont.is_segment = 0;
                         carCont.p = '普通时段';
                         carCont.t = '';
@@ -570,23 +565,17 @@
         return str.substring(0,2) + ':' + str.substring(2,4)
     }
 
-    function carTypeFun(str) {
-        var str1 = '' , j = 0;
-        for(var i in str.split(',')){
-            str1 += str.split(',')[i] + '、';
-            if(j++ >= 3) {
-                return str1.substring(0,str1.length-1);
-            }
-        }
-        return str;
-    }
 
     function makeswipter(vueData) {
-        for(var i in vueData) {
-            for(var j in vueData[i]) {
-                if(j!=78) {$('.swiper-wrapper').html($('.swiper-wrapper').html() + '<div class="swiper-slide" id="'+ j +'"><img src=https://i2.yongche.name/media/' + vueData[i][j][0].image_id +'><div class="title"><span> '+ vueData[i][j][0].name +' </span>' + vueData[i][j][0].brand_desc +'</div>')}
+    		var elstr = '';
+    		vueData.forEach(function(obj,idx){//遍历该服务类型下支持的车型数组
+    			for(var k in obj) {//遍历车型对象的key值，只有1个就是车型ID
+                if(k!=78) {//去除出租车
+                		elstr += '<div class="swiper-slide" id="'+ k +'"><img src=https://i2.yongche.name/media/' + obj[k][0].image_id +'><div class="title"><span> '+ obj[k][0].name +' </span>' + obj[k][0].brand_desc +'</div></div>';
+                	}
             }
-        }
+    		})
+    		$('.swiper-wrapper').html(elstr);
     }
 </script>
 </body>
