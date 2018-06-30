@@ -44,10 +44,18 @@
         .swiper-button-prev, .swiper-button-next { top: 60%; }
 
         #app {}
-        .tab { width: 50%; position: absolute; top: 25px; left: 25%; overflow: hidden; z-index: 10;}
+        .tab { width: 50%; }
         .tab div { width: 49%; float: left; text-align: center; background: #fff; color: #888; height: 36px; line-height: 36px;  border:1px #C8C8C8 solid; border-top-left-radius: 4px; border-bottom-left-radius: 4px;}
         .tab div:nth-child(2) { border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-left:none; border-top-left-radius: 0px; border-bottom-left-radius: 0px;}
         .tab div.hover { background: #f5f5f5; color: #323232; }
+        .tab-type{position: absolute; top: 25px; left: 25%; overflow: hidden; z-index: 10;}
+        .tab-weekend{ margin: 0 auto;}
+        .tab-weekend div{
+        	
+        }
+        /*清除浮动代码*/
+   .clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+   .clearfloat{zoom:1}
 
         .message , .wait{ width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 10; background-color: #fff; z-index: 99999}
 
@@ -64,7 +72,7 @@
 <div class="wait"></div>
 <div class="box" id='app'>
     <div class="newLife" v-if="product!='rm'">
-        <div class="tab">
+        <div class="tab clearfloat tab-type">
             <div class='hover'>{{ title1 }}</div>
             <div>{{ title2 }}</div>
         </div>
@@ -82,6 +90,10 @@
         <dl>
             
             <template v-if="product!='jsj'">
+            		<div class="tab clearfloat tab-weekend" v-if="product=='asap'">
+            			<div class="hover">普通</div>
+            			<div>休息日</div>
+            		</div>
                 <dt class="cont padding" v-if="product=='asap'"><span>{{ starting_fare }}元</span>起步费</dt>
                 <template v-if="product!='asap'">
                     <dt><span>{{ min_fee }}元(包含{{ distance }}公里 {{ time_length }})</span>最低消费</dt>
@@ -91,7 +103,7 @@
                     <dt><span>{{ min_fee }}元</span>最低消费</dt>
                 </template>
 
-                <template v-if="is_segment=='0'">
+                <template v-if="is_segment=='0'">  <!--没有分时段-->
                     <dt class="cont padding"><span>{{ fee_per_kilometer }}元/公里</span>{{ cont1 }}</dt>
 
                     <dt class="cont padding"><span>{{ fee_per_minute }}元/分钟</span>{{ cont2 }}</dt>
@@ -100,7 +112,7 @@
                     <dd class="cont min">超出{{ free_long_distance_kilometer }}公里后，加收长途服务费用。</dd>
                 </template>
 
-                <template v-if="is_segment=='1'">
+                <template v-if="is_segment=='1'">  <!--分时段计费-->
                     <dt class="cont padding" v-if="count_join1"><span>{{fee_per_kilometer}}元/公里</span>{{ cont1 }}</dt>
                     <div v-if="!count_join1">
                         <dt class="cont padding">{{ cont1 }}(分时段)</dt>
@@ -205,7 +217,7 @@
 </div>
 <script>
 //hash #bj_asap_79   #bj_jsj  #bj_rm_1406  
-//asap(1马上、17预约);yy预约(1马上、17预约);sz时租(1马上、17预约);
+//asap(17马上、1预约);yy预约(1马上、17预约);sz时租(1马上、17预约);
     //jsj(7接机、8送机);rz(12日租、11半日租);rm(热门线路);
 //78(出租车);\ 79->37（易达）;\ 5(商务);\80->2（舒适）;\3（豪华）;\1406(凤凰汇专线)    
     var city = location.hash.slice(1).split('_')[0];
@@ -217,8 +229,8 @@
             var carId = location.hash.slice(1).split('_')[3];
     }
    
-    url = 'https://h5.yongche.com/ajax/Valuation/getFeeByCity';
-   // url = 'https://testing-h5.yongche.Org/ajax/Valuation/getFeeByCity';
+    //url = 'https://h5.yongche.com/ajax/Valuation/getFeeByCity';
+    url = 'https://testing2.h5.yongche.Org/ajax/Valuation/getFeeByCity';
 //37（易达）\ 5(商务)\2（舒适）\3（豪华）
     if(carId == 79) {
         carId = 37;
@@ -242,10 +254,15 @@
         console.log(data.result)
         if(product == "asap"||product == "yy") {
             for(var i in data.result){ //遍历当前服务类型
-                data.result[i].price.forEach(function(e,index) {//普通工作日
+                data.result[i].price['default'].forEach(function(e,index) {//普通工作日
                     if(e['78']){//去掉租出车
-                        data.result[i].price.splice(index,1);
-                        //data.result[i].price.default.splice(index,1);
+                        data.result[i].price['default'].splice(index,1);
+                        return;
+                    }
+                });
+                data.result[i].price['weekend'].forEach(function(e,index) {//休息日
+                    if(e['78']){//去掉租出车
+                        data.result[i].price['weekend'].splice(index,1);
                         return;
                     }
                 });
@@ -313,8 +330,10 @@
                     vueData = data.result[i].price;
                     rmName =  data.result[i].name;
                 }
+            } else if(product == 'asap'){//马上用车需要区分普通和休息日
+                vueData = data.result[carTypeJson[product]['carTypeIndex'][0]]['price']['default'];
             } else {
-                vueData = data.result[carTypeJson[product]['carTypeIndex'][0]]['price']; //TODO 这里区分出马上用车
+                vueData = data.result[carTypeJson[product]['carTypeIndex'][0]]['price'];
             }
 
             if(product == 'jsj') {//接送机
@@ -454,13 +473,36 @@
                    } else {mySwiper.slideTo(index,0)}
                 }
             },0)
-            $('.tab div').on('touchend',function() {
+            $('.tab-type div').on('touchend',function() {
                 $(this).addClass('hover').siblings().removeClass('hover');
+                var tabTypeTdx = $(this).index();
                 if(product == 'jsj') {
-                    vueData = data.result[carTypeJson[product]['carTypeIndex'][$(this).index()]];
-                } else {
-                    vueData = data.result[carTypeJson[product]['carTypeIndex'][$(this).index()]]['price'];
+                    vueData = data.result[carTypeJson[product]['carTypeIndex'][tabTypeTdx]];
+                } else if(product == 'asap'){
+                		var tabWeekIdx = $('.tab-weekend div.hover').index();
+                		var keyStr =  tabWeekIdx == 0 ? 'default' :'weekend';
+                    vueData = data.result[carTypeJson[product]['carTypeIndex'][tabTypeTdx]]['price'][keyStr]; 
+                    
+                }else{
+                		vueData = data.result[carTypeJson[product]['carTypeIndex'][tabTypeTdx]]['price'];
                 }
+                vueData.forEach(function(ele,idx){//遍历当前服务类型下支持的车型数组
+            			if(idx==MineIndex){
+            				console.log(MineIndex)
+            				for(var k in ele) {//遍历轮播图的索引对应的车型数据对象，只有一个key即车型id
+                            vueCarType = ele[k];//车型数据的分时段数据的数组
+                        }
+            			}
+            		})
+				//console.log(vueCarType)  //目前测试环境马上用车支持的车型数和预约用车支持的车型数不等，导致切换后对应不上。 //TODO
+                product == 'jsj' ? changContent(vueData) : changContent(vueCarType)
+            })
+            $('.tab-weekend div').on('touchend',function() {//只有asap才区分“普通和休息日”
+                $(this).addClass('hover').siblings().removeClass('hover');
+                var tabWeekIdx = $(this).index();
+                var tabTypeTdx = $('.tab-type div.hover').index();
+                var keyStr =  tabWeekIdx == 0 ? 'default' :'weekend';
+                vueData = data.result[carTypeJson[product]['carTypeIndex'][tabTypeTdx]]['price'][keyStr];
                 vueData.forEach(function(ele,idx){//遍历当前服务类型下支持的车型数组
             			if(idx==MineIndex){
             				for(var k in ele) {//遍历轮播图的索引对应的车型数据对象，只有一个key即车型id
@@ -468,12 +510,10 @@
                         }
             			}
             		})
-
-                product == 'jsj' ? changContent(vueData) : changContent(vueCarType)
+                changContent(vueCarType)
             })
 
             function changContent(vueCarContent) {//更改计费内容，参数：某车型的分时段数组
-                // var MineIndex
                 if(product == 'jsj') {
                     carCont.jsj = [];
                     console.log(vueCarContent)
