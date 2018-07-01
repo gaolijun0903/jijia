@@ -18,171 +18,234 @@ body { background: #F0F0F0; font-family: Helvetica Neue, Helvetica, Arial, sans-
 *{padding: 0;	margin: 0;	box-sizing: border-box;}
 ul,li{	list-style: none;}
 
+
 #app{
 	
 }   
-.headerwrapper{
-	
-} 	
-.headerwrapper .tabox{
-	
-} 
-.headerwrapper .tabox{
-	
-}
- 
-.headerwrapper .swiperbox{
-	
-} 
-.headerwrapper .swiperbox{
-	
-} 
+.headerwrapper{ width: 100%; height: 4.59rem; padding-top: 0.5rem;background: #FFFFFF;} 	
+.headerwrapper .tab-type{ margin: 0 auto;width: 4.0rem;height: 0.8rem;background: #F5F5F5;border-radius: 0.08rem;} 
+.headerwrapper .tab-type .tabitem{ display: inline-block; width: 48%; text-align: center; font-size: 0.28rem; line-height: 0.8rem; color: #969696; }
+.headerwrapper .tab-type .tabitem.active{ color: #323232; } 
+.headerwrapper .tab-type .splitline{ display: inline-block;vertical-align: middle; width: 0.02rem ; height: 0.4rem; background: #C8C8C8;}
+.swiper-container{width: 100%; overflow: hidden;} 
+.headerwrapper .swiper-container .swiper-wrapper .swiper-slide { height: 100%; overflow: hidden;padding-top: 0.4rem;}
+.swiper-container .swiper-wrapper img{display: block; width: 5.0rem; margin:0 auto; } 
+.swiper-container .swiper-wrapper .title{ text-align: center; color: #646464; font-size: 0.24rem; }
+.swiper-container .swiper-wrapper .title span{ color: #323232; font-size: 0.32rem; }
+.swiper-container .swiper-button-next, .swiper-container .swiper-button-prev { background-size: 0.2rem 0.4rem; }
 
-.mainwrapper{
-	
-}
+.mainwrapper{}
+.mainwrapper .tab-weekend{margin: 0.48rem auto 0.32rem; width: 3.20rem; color: #969696;}
+.mainwrapper .tab-weekend .tabitem{display: inline-block; width: 48%;}
+.mainwrapper .tab-weekend .tabitem.active{color: #323232;}
+.mainwrapper .tab-weekend .tabitem.active .border{width: 80%; height: 0.04rem; border-radius: 0.02rem; background: #323232; margin: 0 auto;}
+.mainwrapper .tab-weekend .tabitem .words{text-align: center; line-height: 0.28rem; font-size: 0.28rem; margin-bottom: 0.16rem;}
+
+.mainwrapper .feelistwrapper{padding: 0 0.60rem;}
+.mainwrapper .feelistwrapper .baselist .listitem .itemtitle{font-size: 0.28rem; line-height: 0.4rem; color: #323232; zoom:1;}
+.mainwrapper .feelistwrapper .baselist .listitem .descitem{font-size: 0.24rem; line-height: 0.4rem; color: #969696; zoom:1;}
+/*清除浮动代码*/
+.mainwrapper .feelistwrapper .baselist .listitem .itemtitle:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+.mainwrapper .feelistwrapper .baselist .listitem .descitem:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+.mainwrapper .feelistwrapper .baselist .listitem .item-l{float: left; }
+.mainwrapper .feelistwrapper .baselist .listitem .item-r{float: right; text-align: right;}
+
+
+
+
+
     </style>
 </head>
 <body>
 	<div id="app" class="appwrapper" v-cloak>	
-		<div class="headerwrapper">
-			<div class="tabox">
-				<div class="tabitem">马上用车</div>
-				<div class="tabitem">预约用车</div>
+		<section class="headerwrapper">
+			<div class="tab-type">
+				<div class="tabitem active" idx = "0">马上用车</div>
+            	<span class="splitline"></span>
+				<div class="tabitem" idx = "1">预约用车</div>
 			</div>
-			<div class="swiperbox">
+			<div class="swiper-container">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide" id=''>
-						<img src=''>
+						<img src='https://i2.yongche.name/media/g2/M02/1E/09/rBEBP1rdk4yIbMa9AAByY_4VkZkAALuxwKSD5wAAHJ7543.png'>
 						<div class="title">
-							<span>  </span>
+							<span> 商务 </span> 别克GL8
 						</div>
 					</div>
 				</div>
 		        <div class="swiper-button-prev swiper-button-black"></div>
 		        <div class="swiper-button-next swiper-button-black"></div>
 			</div>
-		</div>
-		<div class="mainwrapper">
-			<div class="tabbox">
-				<div class="tabitem">普通</div>
-				<div class="tabitem">休息日</div>
+		</section>
+		<section class="mainwrapper">
+			
+			<div class="tab-weekend">
+				<div class="tabitem active" idx = "0">
+    				<div class="words">普通</div>
+    				<div class="border"></div>
+    			</div>
+    			<div class='tabitem' idx = "1">
+    				<div class="words">休息日</div>
+    				<div class="border"></div>
+    			</div>
 			</div>
+			
 			<div class="feelistwrapper">
-				<ul class="baselist">
-					<li class="listitem">
-						<div class="itemtitle">
-							<div class="itemtitle-l">起步费</div>
-							<div class="itemtitle-r">17元</div>
-						</div>
-					</li>
-					<li class="listitem">
-						<div class="itemtitle">
-							<div class="itemtitle-l">最低消费</div>
-							<div class="itemtitle-r">34元</div>
-						</div>
-					</li>
-					<li class="listitem">
-						<div class="itemtitle">
-							<div class="itemtitle-l">里程费（分时段）</div>
-						</div>
-						<div class="itemdesc">
-							<ul>
-								<li class="descitem">
-									<div class="descitem-l">普通时段</div>
-									<div class="descitem-r">3.3元/公里</div>
-								</li>
-								<li class="descitem">
-									<div class="descitem-l">00:00-06:00</div>
-									<div class="descitem-r">5元/公里</div>
-								</li>
-								<li class="descitem">
-									<div class="descitem-l">23:00-24:00</div>
-									<div class="descitem-r">5元/公里</div>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li class="listitem">
-						<div class="itemtitle">
-							<div class="itemtitle-l">时长费</div>
-						</div>
-						<div class="itemdesc">
-							<ul>
-								<li class="descitem">
-									<div class="descitem-l">普通时段</div>
-									<div class="descitem-r">3.3元/分钟</div>
-								</li>
-								<li class="descitem">
-									<div class="descitem-l">00:00-06:00</div>
-									<div class="descitem-r">5元/分钟</div>
-								</li>
-								<li class="descitem">
-									<div class="descitem-l">23:00-24:00</div>
-									<div class="descitem-r">5元/分钟</div>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li class="listitem">
-						<div class="itemtitle">
-							<div class="itemtitle-l">长途附加费</div>
-							<div class="itemtitle-r">1.8元/公里</div>
-						</div>
-						<div class="itemdesc">
-							<ul>
-								<li class="descitem">
-									<div class="descitem-l">
-										超出13公里后，加收长途服务费用。
-									</div>
-								</li>
-							</ul>
-						</div>
-					</li>
-				</ul>
-				<div class="linewrapper">
-					<span>——————</span>
-					<span>其他费用</span>
-					<span>——————</span>
-				</div>
-				<ul class="otherlist">
-					<li class="listitem">
-						<dt>议价费用</dt>
-            			<dd class="cont padding">根据用车需求的不同时段，乘客可以选择对该订单进行加价或减价，在用车高峰时段或者遇到特殊天气，司机较少，对订单加价，鼓励司机更快接单；在非高峰期时段，司机较多，对订单减价，节约乘客的出行成本。</dd>
-
-					</li>
-					<li class="listitem">
-						<dt>高速费</dt>
-           				 <dd class="cont padding">在高速公路（包括机场高速）行驶所产生的费用，由各地高速路管理部门收取。</dd>
-
-					</li>
-					<li class="listitem">
-						<dt>停车费</dt>
-           				 <dd class="cont padding">司机按约定时间到达后因等待乘客上车而产生的泊车费用，按实际发生费用收取。</dd>
-
-					</li>
-					<li class="listitem">
-						<dt class="cont ">夜间服务费</dt>
-                		<dd class="cont padding">23:00至次日5:00之间的用车，需要收取夜间服务费，易达车型0.5元/分钟、舒适、商务、豪华1元/分钟。</dd>
-					</li>
-					<li class="listitem">
-						<dt>超时费用</dt>
-            			<dd class="cont padding">除海口、三亚、厦门以外的城市，时租服务超出30分钟、接送机、日租、半日租服务超出套餐部分时长，则按照实际用车时长加收超时费用。</dd>
-					</li>
-					<li class="listitem">
-						<dt>取消订单费用</dt>
-            			<dd class="cont max">日租、半日租订单，距服务开始1小时之前（包括1小时）取消订单，不收取任何费用；距服务开始1小时之内取消订单，需要支付套餐全额。
-                时租、接送机订单（填写航班号除外）、接送站订单，下单后，司机到达后按约定时间免费等待10分钟；接机服务中，填写航班信息的订单，将按照飞机抵达时间为准，如遇飞机延误情况，司机将免费等待至飞机抵达
-                若用户在10分钟内未用车且未主动取消订单，司机与客服都无法联系到乘客的情况下，订单将会被强制取消，并扣取起步价金额，未绑卡的用户或余额不足的用户将会被冻结，待充值或验证信用卡补足欠款后，自动解冻。</dd>
-					</li>
-					<!--<li class="listitem">
-						<dt>价格上浮</dt>
-            			<dd class="cont max">在高峰时段或特殊情景如大风情况下，周围服务司机较少，或司机距您较远，为促成交易，鼓励司机更快接单，平台会对订单适当加价，保障您的出行。</dd>
-					</li>-->
+				<section>
+					<ul class="baselist">
+						<li class="listitem">
+							<div class="itemtitle">
+								<div class="item-l">起步费</div>
+								<div class="item-r">17元</div>
+							</div>
+						</li>
+						<li class="listitem">
+							<div class="itemtitle">
+								<div class="item-l">最低消费</div>
+								<div class="item-r">34元</div>
+							</div>
+						</li>
+						
+						<!--里程费-->
+						<li class="listitem">
+							<section v-if="is_kilo_segment=='0'"> <!--不分时段-->
+								<div class="itemtitle">
+									<div class="item-l">里程费</div>
+									<div class="item-r">34元/公里</div>
+								</div>
+							</section>
+							<section  v-if="is_kilo_segment=='1'"> <!--分时段-->
+								<div class="itemtitle">
+									<div class="item-l">里程费（分时段）</div>
+								</div>
+								<div class="itemdesc">
+									<ul>
+										<li class="descitem">
+											<div class="item-l">普通时段</div>
+											<div class="item-r">3.3元/公里</div>
+										</li>
+										<li class="descitem">
+											<div class="item-l">00:00-06:00</div>
+											<div class="item-r">5元/公里</div>
+										</li>
+										<li class="descitem">
+											<div class="item-l">23:00-24:00</div>
+											<div class="item-r">5元/公里</div>
+										</li>
+									</ul>
+								</div>
+							</section>
+						</li>
+						
+						<!--时长费-->
+						<li class="listitem">
+							<section v-if="is_time_segment=='0'"> <!--不分时段-->
+								<div class="itemtitle">
+									<div class="item-l">时长费</div>
+									<div class="item-r">34元/分钟</div>
+								</div>
+							</section>
+							<section  v-if="is_time_segment=='1'"> <!--分时段-->
+								<div class="itemtitle">
+									<div class="item-l">时长费（分时段）</div>
+								</div>
+								<div class="itemdesc">
+									<ul>
+										<li class="descitem">
+											<div class="item-l">普通时段</div>
+											<div class="item-r">3.3元/分钟</div>
+										</li>
+										<li class="descitem">
+											<div class="item-l">00:00-06:00</div>
+											<div class="item-r">5元/分钟</div>
+										</li>
+										<li class="descitem">
+											<div class="item-l">23:00-24:00</div>
+											<div class="item-r">5元/分钟</div>
+										</li>
+									</ul>
+								</div>
+							</section>	
+						</li>
+						
+						<!--长途附加费-->
+						<li class="listitem">
+							<section v-if="is_time_segment=='0'"> <!--不分时段-->
+								<div class="itemtitle">
+									<div class="item-l">长途附加费</div>
+									<div class="item-r">1.8元/公里</div>
+								</div>
+								<div class="itemsubtitle">超出13公里后，加收长途服务费用。</div>
+							</section>
+							<section  v-if="is_time_segment=='1'"> <!--分时段-->
+								<div class="itemtitle">
+									<div class="item-l">长途附加费（分时段）</div>
+								</div>
+								<div class="itemsubtitle">超出13公里后，加收长途服务费用。</div>
+								
+								<div class="itemdesc">
+									<ul>
+										<li class="descitem">
+											<div class="item-l">普通时段</div>
+											<div class="item-r">3.3元/公里</div>
+										</li>
+										<li class="descitem">
+											<div class="item-l">00:00-06:00</div>
+											<div class="item-r">5元/公里</div>
+										</li>
+										<li class="descitem">
+											<div class="item-l">23:00-24:00</div>
+											<div class="item-r">5元/公里</div>
+										</li>
+									</ul>
+								</div>
+							</section>
+						</li>
+					</ul>
+				</section>	
+				
+				
+				<section>
+					<div class="linewrapper">
+						<span>——————</span>
+						<span>其他费用</span>
+						<span>——————</span>
+					</div>
+					<ul class="otherlist">
+						<li class="listitem">
+							<dt>议价费用</dt>
+	            			<dd class="cont padding">根据用车需求的不同时段，乘客可以选择对该订单进行加价或减价，在用车高峰时段或者遇到特殊天气，司机较少，对订单加价，鼓励司机更快接单；在非高峰期时段，司机较多，对订单减价，节约乘客的出行成本。</dd>
+	
+						</li>
+						<li class="listitem">
+							<dt>高速费</dt>
+	           				 <dd class="cont padding">在高速公路（包括机场高速）行驶所产生的费用，由各地高速路管理部门收取。</dd>
+	
+						</li>
+						<li class="listitem">
+							<dt>停车费</dt>
+	           				 <dd class="cont padding">司机按约定时间到达后因等待乘客上车而产生的泊车费用，按实际发生费用收取。</dd>
+	
+						</li>
+						<li class="listitem">
+							<dt class="cont ">夜间服务费</dt>
+	                		<dd class="cont padding">23:00至次日5:00之间的用车，需要收取夜间服务费，易达车型0.5元/分钟、舒适、商务、豪华1元/分钟。</dd>
+						</li>
+						<li class="listitem">
+							<dt>超时费用</dt>
+	            			<dd class="cont padding">除海口、三亚、厦门以外的城市，时租服务超出30分钟、接送机、日租、半日租服务超出套餐部分时长，则按照实际用车时长加收超时费用。</dd>
+						</li>
+						<li class="listitem">
+							<dt>取消订单费用</dt>
+	            			<dd class="cont max">日租、半日租订单，距服务开始1小时之前（包括1小时）取消订单，不收取任何费用；距服务开始1小时之内取消订单，需要支付套餐全额。
+	                时租、接送机订单（填写航班号除外）、接送站订单，下单后，司机到达后按约定时间免费等待10分钟；接机服务中，填写航班信息的订单，将按照飞机抵达时间为准，如遇飞机延误情况，司机将免费等待至飞机抵达
+	                若用户在10分钟内未用车且未主动取消订单，司机与客服都无法联系到乘客的情况下，订单将会被强制取消，并扣取起步价金额，未绑卡的用户或余额不足的用户将会被冻结，待充值或验证信用卡补足欠款后，自动解冻。</dd>
+						</li>
+					</ul>
+				</section>
 					
-				</ul>
 			</div>
-		</div>
+		</section>
 	</div>	
 	
 	
@@ -195,6 +258,11 @@ new Vue({
   	el: '#app',
 	data:{
 		urlDomain:'',
+		
+		is_kilo_segment:1,
+		is_time_segment:1,
+		
+		
 		
 	  	showToast:false,  //吐司提示框的展示与否  false-不展示，true-展示
 	  	toastMsg:'' //吐司提示信息
