@@ -254,11 +254,22 @@ ul,li{	list-style: none;}
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js'></script>
     <script type="text/javascript" src='https://cdn.bootcss.com/vue/2.5.16/vue.min.js'></script>
 <script type="text/javascript">
+	var city = location.hash.slice(1).split('_')[0];
+    var product = location.hash.slice(1).split('_')[1];
+    var carId = location.hash.slice(1).split('_')[2];
+    if(product == "rm") {
+        var fixed_id = location.hash.slice(1).split('_')[2]
+        if(!fixed_id) { product = "sz"}
+            var carId = location.hash.slice(1).split('_')[3];
+    }
+    
+    
 new Vue({
   	el: '#app',
 	data:{
-		urlDomain:'',
-		
+		urlDomain:'https://h5.yongche.com',
+		//urlDomain:'https://testing2.h5.yongche.Org',
+		api:'/ajax/Valuation/getFeeByCity',
 		is_kilo_segment:1,
 		is_time_segment:1,
 		
@@ -277,7 +288,20 @@ new Vue({
 	methods:{
 	  	initData:function (){
 			var vm = this;
-			
+			var params = {city:city,product:product,fixed_id:fixed_id,is_sort:1}
+			$.ajax({
+		        dataType:'jsonp',
+		        type: 'post',
+		        url: vm.urlDomain + vm.api,
+		        data: params,
+		        success:function(res){
+		        	console.log(res)
+		        },
+		        error:function(err){
+		        	
+		        }
+		    })
+		    	
 		},
 		
 		showToastFn:function(msg){  //toast提示
