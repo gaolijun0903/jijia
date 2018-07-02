@@ -14,11 +14,11 @@
     <style type="text/css">
 [v-cloak] {display: none;}
 html, body { position: relative; height: 100%;}
-body { background: #F0F0F0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#000; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body { background: #fafafa; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#000; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 *{padding: 0;	margin: 0;	box-sizing: border-box;}
 ul,li{	list-style: none;}
 
-
+.wait { background-color: #eee; transition:opacity .3s linear;}
 #app{
 	
 }   
@@ -42,17 +42,21 @@ ul,li{	list-style: none;}
 .mainwrapper .tab-weekend .tabitem .words{text-align: center; line-height: 0.28rem; font-size: 0.28rem; margin-bottom: 0.16rem;}
 
 .mainwrapper .feelistwrapper{padding: 0 0.60rem;}
-.mainwrapper .feelistwrapper .baselist .listitem .itemtitle{font-size: 0.28rem; line-height: 0.4rem; color: #323232; zoom:1;}
-.mainwrapper .feelistwrapper .baselist .listitem .descitem{font-size: 0.24rem; line-height: 0.4rem; color: #969696; zoom:1;}
+.mainwrapper .listitem .itemtitle{margin-bottom: 0.2rem; font-size: 0.28rem; line-height: 0.28rem; color: #323232; zoom:1;}
+.mainwrapper .listitem .itemdesc{ font-size: 0.24rem; line-height: 0.34rem; color: #969696;} 
+.mainwrapper .listitem .segmentlist{font-size: 0.24rem; line-height: 0.34rem; color: #969696;}
+.mainwrapper .listitem .segmentlist .segmentitem{margin-bottom: 0.16rem; padding-left: 0.12rem; zoom:1;} 
 /*清除浮动代码*/
-.mainwrapper .feelistwrapper .baselist .listitem .itemtitle:after{display:block;clear:both;content:"";visibility:hidden;height:0}
-.mainwrapper .feelistwrapper .baselist .listitem .descitem:after{display:block;clear:both;content:"";visibility:hidden;height:0}
-.mainwrapper .feelistwrapper .baselist .listitem .item-l{float: left; }
-.mainwrapper .feelistwrapper .baselist .listitem .item-r{float: right; text-align: right;}
+.mainwrapper .baselist .listitem .itemtitle:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+.mainwrapper .baselist .listitem .segmentlist .segmentitem:after{ display:block;clear:both;content:"";visibility:hidden;height:0}
+.mainwrapper .baselist .listitem .item-l{float: left; }
+.mainwrapper .baselist .listitem .item-r{float: right; text-align: right;}
+.mainwrapper .otherlist .listitem .itemdesc{margin-bottom: 0.4rem; }
 
-
-
-
+.mainwrapper .linewrapper{margin: 0.18rem auto 0.4rem; text-align: center;}
+.mainwrapper .linewrapper p{display: inline-block; vertical-align: middle; color: #969696; font-size: 0.28rem; line-height: 0.28rem;}
+.mainwrapper .linewrapper .hrline{width: 1.8rem; height: 0.01rem; background: #969696;}
+.mainwrapper .linewrapper .lineword{padding: 0 0.32rem;}
 
     </style>
 </head>
@@ -66,8 +70,10 @@ ul,li{	list-style: none;}
 			</div>
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide" id=''>
-						<img src='https://i2.yongche.name/media/g2/M02/1E/09/rBEBP1rdk4yIbMa9AAByY_4VkZkAALuxwKSD5wAAHJ7543.png'>
+					<div class="swiper-slide" :id='cartype.car_type_id' v-for="cartype in swiperArr">
+<!--						<img src='https://i2.yongche.name/media/g2/M02/1E/09/rBEBP1rdk4yIbMa9AAByY_4VkZkAALuxwKSD5wAAHJ7543.png'>-->
+						<!--<img :src = 'https://i2.yongche.name/media'+cartype.imgsrc >-->
+						<img :src = 'cartype.imgsrc' >
 						<div class="title">
 							<span> 商务 </span> 别克GL8
 						</div>
@@ -118,17 +124,17 @@ ul,li{	list-style: none;}
 								<div class="itemtitle">
 									<div class="item-l">里程费（分时段）</div>
 								</div>
-								<div class="itemdesc">
+								<div class="segmentlist">
 									<ul>
-										<li class="descitem">
+										<li class="segmentitem">
 											<div class="item-l">普通时段</div>
 											<div class="item-r">3.3元/公里</div>
 										</li>
-										<li class="descitem">
+										<li class="segmentitem">
 											<div class="item-l">00:00-06:00</div>
 											<div class="item-r">5元/公里</div>
 										</li>
-										<li class="descitem">
+										<li class="segmentitem">
 											<div class="item-l">23:00-24:00</div>
 											<div class="item-r">5元/公里</div>
 										</li>
@@ -149,17 +155,17 @@ ul,li{	list-style: none;}
 								<div class="itemtitle">
 									<div class="item-l">时长费（分时段）</div>
 								</div>
-								<div class="itemdesc">
+								<div class="segmentlist">
 									<ul>
-										<li class="descitem">
+										<li class="segmentitem">
 											<div class="item-l">普通时段</div>
 											<div class="item-r">3.3元/分钟</div>
 										</li>
-										<li class="descitem">
+										<li class="segmentitem">
 											<div class="item-l">00:00-06:00</div>
 											<div class="item-r">5元/分钟</div>
 										</li>
-										<li class="descitem">
+										<li class="segmentitem">
 											<div class="item-l">23:00-24:00</div>
 											<div class="item-r">5元/分钟</div>
 										</li>
@@ -170,30 +176,30 @@ ul,li{	list-style: none;}
 						
 						<!--长途附加费-->
 						<li class="listitem">
-							<section v-if="is_time_segment=='0'"> <!--不分时段-->
+							<section v-if="is_longdistance_segment=='0'"> <!--不分时段-->
 								<div class="itemtitle">
 									<div class="item-l">长途附加费</div>
 									<div class="item-r">1.8元/公里</div>
 								</div>
 								<div class="itemsubtitle">超出13公里后，加收长途服务费用。</div>
 							</section>
-							<section  v-if="is_time_segment=='1'"> <!--分时段-->
+							<section  v-if="is_longdistance_segment=='1'"> <!--分时段-->
 								<div class="itemtitle">
 									<div class="item-l">长途附加费（分时段）</div>
 								</div>
-								<div class="itemsubtitle">超出13公里后，加收长途服务费用。</div>
+								<div class="itemdesc">超出13公里后，加收长途服务费用。</div>
 								
-								<div class="itemdesc">
+								<div class="segmentlist">
 									<ul>
-										<li class="descitem">
+										<li class="segmentitem">
 											<div class="item-l">普通时段</div>
 											<div class="item-r">3.3元/公里</div>
 										</li>
-										<li class="descitem">
+										<li class="segmentitem">
 											<div class="item-l">00:00-06:00</div>
 											<div class="item-r">5元/公里</div>
 										</li>
-										<li class="descitem">
+										<li class="segmentitem">
 											<div class="item-l">23:00-24:00</div>
 											<div class="item-r">5元/公里</div>
 										</li>
@@ -207,37 +213,39 @@ ul,li{	list-style: none;}
 				
 				<section>
 					<div class="linewrapper">
-						<span>——————</span>
-						<span>其他费用</span>
-						<span>——————</span>
+						<span>
+							<p class="hrline"></p>
+							<p class="lineword">其他费用</p>
+							<p class="hrline"></p>
+						</span>
 					</div>
 					<ul class="otherlist">
 						<li class="listitem">
-							<dt>议价费用</dt>
-	            			<dd class="cont padding">根据用车需求的不同时段，乘客可以选择对该订单进行加价或减价，在用车高峰时段或者遇到特殊天气，司机较少，对订单加价，鼓励司机更快接单；在非高峰期时段，司机较多，对订单减价，节约乘客的出行成本。</dd>
+							<dt class="itemtitle">议价费用</dt>
+	            			<dd class="itemdesc">根据用车需求的不同时段，乘客可以选择对该订单进行加价或减价，在用车高峰时段或者遇到特殊天气，司机较少，对订单加价，鼓励司机更快接单；在非高峰期时段，司机较多，对订单减价，节约乘客的出行成本。</dd>
 	
 						</li>
 						<li class="listitem">
-							<dt>高速费</dt>
-	           				 <dd class="cont padding">在高速公路（包括机场高速）行驶所产生的费用，由各地高速路管理部门收取。</dd>
+							<dt class="itemtitle">高速费</dt>
+	           				<dd class="itemdesc">在高速公路（包括机场高速）行驶所产生的费用，由各地高速路管理部门收取。</dd>
 	
 						</li>
 						<li class="listitem">
-							<dt>停车费</dt>
-	           				 <dd class="cont padding">司机按约定时间到达后因等待乘客上车而产生的泊车费用，按实际发生费用收取。</dd>
+							<dt class="itemtitle">停车费</dt>
+	           				<dd class="itemdesc">司机按约定时间到达后因等待乘客上车而产生的泊车费用，按实际发生费用收取。</dd>
 	
 						</li>
 						<li class="listitem">
-							<dt class="cont ">夜间服务费</dt>
-	                		<dd class="cont padding">23:00至次日5:00之间的用车，需要收取夜间服务费，易达车型0.5元/分钟、舒适、商务、豪华1元/分钟。</dd>
+							<dt class="itemtitle">夜间服务费</dt>
+	                		<dd class="itemdesc">23:00至次日5:00之间的用车，需要收取夜间服务费，易达车型0.5元/分钟、舒适、商务、豪华1元/分钟。</dd>
 						</li>
 						<li class="listitem">
-							<dt>超时费用</dt>
-	            			<dd class="cont padding">除海口、三亚、厦门以外的城市，时租服务超出30分钟、接送机、日租、半日租服务超出套餐部分时长，则按照实际用车时长加收超时费用。</dd>
+							<dt class="itemtitle">超时费用</dt>
+	            			<dd class="itemdesc">除海口、三亚、厦门以外的城市，时租服务超出30分钟、接送机、日租、半日租服务超出套餐部分时长，则按照实际用车时长加收超时费用。</dd>
 						</li>
 						<li class="listitem">
-							<dt>取消订单费用</dt>
-	            			<dd class="cont max">日租、半日租订单，距服务开始1小时之前（包括1小时）取消订单，不收取任何费用；距服务开始1小时之内取消订单，需要支付套餐全额。
+							<dt class="itemtitle">取消订单费用</dt>
+	            			<dd class="itemdesc">日租、半日租订单，距服务开始1小时之前（包括1小时）取消订单，不收取任何费用；距服务开始1小时之内取消订单，需要支付套餐全额。
 	                时租、接送机订单（填写航班号除外）、接送站订单，下单后，司机到达后按约定时间免费等待10分钟；接机服务中，填写航班信息的订单，将按照飞机抵达时间为准，如遇飞机延误情况，司机将免费等待至飞机抵达
 	                若用户在10分钟内未用车且未主动取消订单，司机与客服都无法联系到乘客的情况下，订单将会被强制取消，并扣取起步价金额，未绑卡的用户或余额不足的用户将会被冻结，待充值或验证信用卡补足欠款后，自动解冻。</dd>
 						</li>
@@ -254,24 +262,28 @@ ul,li{	list-style: none;}
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js'></script>
     <script type="text/javascript" src='https://cdn.bootcss.com/vue/2.5.16/vue.min.js'></script>
 <script type="text/javascript">
-	var city = location.hash.slice(1).split('_')[0];
-    var product = location.hash.slice(1).split('_')[1];
-    var carId = location.hash.slice(1).split('_')[2];
-    if(product == "rm") {
-        var fixed_id = location.hash.slice(1).split('_')[2]
-        if(!fixed_id) { product = "sz"}
-            var carId = location.hash.slice(1).split('_')[3];
-    }
+	
     
     
 new Vue({
   	el: '#app',
 	data:{
-		urlDomain:'https://h5.yongche.com',
-		//urlDomain:'https://testing2.h5.yongche.Org',
+		//urlDomain:'https://h5.yongche.com',
+		urlDomain:'https://testing2.h5.yongche.Org',
 		api:'/ajax/Valuation/getFeeByCity',
+		city:'',
+		product:'',
+		carId:'',
+		fixed_id:'',
+		carTypeSwiper:'',
+		carTypelist:[],
+		swiperArr:[],  //车型轮播图所需数据数组
 		is_kilo_segment:1,
 		is_time_segment:1,
+		is_longdistance_segment:1,
+		kilo_segment_list:[],
+		time_segment_list:[],
+		longdistance_segment_list:[],
 		
 		
 		
@@ -282,13 +294,13 @@ new Vue({
 		
 	},
 	mounted: function(){
-		
+		this.dealHash();
 	  	this.initData();
 	},
 	methods:{
 	  	initData:function (){
 			var vm = this;
-			var params = {city:city,product:product,fixed_id:fixed_id,is_sort:1}
+			var params = {city:vm.city,product:vm.product,fixed_id:vm.fixed_id,is_sort:1}
 			$.ajax({
 		        dataType:'jsonp',
 		        type: 'post',
@@ -296,6 +308,19 @@ new Vue({
 		        data: params,
 		        success:function(res){
 		        	console.log(res)
+		        	if(res.code == 200 && res.result){
+		        		if(vm.product=='asap'){
+		        			
+		        		}
+		        		vm.carTypelist = res.result['1'].price.default; //该服务支持的车型数组
+		        		console.log(vm.carTypelist )
+		        		vm.swiperArr = vm.makeSwiperData(vm.carTypelist);
+		        		vm.$nextTick(function(){
+		        			
+		        			vm.initSwiper();
+		        		})
+		        	}
+		        	
 		        },
 		        error:function(err){
 		        	
@@ -303,7 +328,67 @@ new Vue({
 		    })
 		    	
 		},
-		
+		initSwiper:function(){
+			this.carTypeSwiper = new Swiper('.swiper-container', {
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                on: {
+                    slideChangeTransitionEnd: function(event){
+                        /*MineIndex = this.activeIndex; //轮播图当前索引
+                        var vueCarContent;
+                        if(product == 'jsj') {
+                            MineIndex = MineIndex;
+                            vueCarContent = vueData;
+                        } else {
+                        		vueData.forEach(function(ele,idx){//遍历当前服务类型下支持的车型数组
+                        			if(idx==MineIndex){
+                        				for(var k in ele) {//遍历轮播图的索引对应的车型数据对象，只有一个key即车型id
+                                        vueCarContent = ele[k];//车型数据的分时段数据的数组
+                                    }
+                        			}
+                        		})
+                        }
+                        changContent(vueCarContent)*/
+                    }
+                    
+                }
+            });
+		},
+		makeSwiperData:function(carTypeArr){//构造轮播图数据，参数：某服务支持的车型数组
+			var swiperArr =  [];
+			if(carTypeArr instanceof Array){
+				var segmentArr = carTypeArr[0]; //该车型分段计费的第一个时段对象
+				carTypeArr.forEach(function(carTypeObj,idx){
+					for(var id in carTypeObj){//车型对象只有一个属性，就是车型id，该属性值是：分段计费数组
+						var segmentArr = carTypeObj[id]; //分段计费数组；
+					}
+					var segmentobj = segmentArr[0]; 
+					segmentobj.imgsrc = 'https://i2.yongche.name/media' + segmentobj.image_id;
+					swiperArr.push(segmentArr[0]); //取第一个分段对象
+				})
+				//console.log(swiperArr);
+				return swiperArr;
+			}else{
+				console.log('传入的数据格式不对');
+			}
+		},
+		dealHash:function(){ //处理hash携带的数据
+			//hash #bj_asap_79   #bj_jsj  #bj_rm_1406  
+			var hashArr  = location.hash.slice(1).split('_');
+			this.city = hashArr[0];
+			this.product = hashArr[1];
+			this.carId = hashArr[2];
+		    if(this.product == "rm") { //热门线路
+		    	if(!this.carId){ this.product = "sz" }
+		    	this.fixed_id = this.carId;
+		    	this.carId = hashArr[3];
+		    }
+		},
+		timeFormatter:function (str) { //分段时间数据格式化
+	        return str.substring(0,2) + ':' + str.substring(2,4);
+	   	},
 		showToastFn:function(msg){  //toast提示
 			var vm = this;
 			vm.showToast = true;
