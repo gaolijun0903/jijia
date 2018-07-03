@@ -71,9 +71,7 @@ ul,li{	list-style: none;}
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide" :id='cartype.car_type_id' v-for="cartype in swiperArr">
-<!--						<img src='https://i2.yongche.name/media/g2/M02/1E/09/rBEBP1rdk4yIbMa9AAByY_4VkZkAALuxwKSD5wAAHJ7543.png'>-->
-						<!--<img :src = 'https://i2.yongche.name/media'+cartype.imgsrc >-->
-						<img :src = 'cartype.imgsrc' >
+						<img :src ="'https://i2.yongche.name/media/'+cartype.image_id "  >
 						<div class="title">
 							<span> 商务 </span> 别克GL8
 						</div>
@@ -309,14 +307,19 @@ new Vue({
 		        success:function(res){
 		        	console.log(res)
 		        	if(res.code == 200 && res.result){
-		        		if(vm.product=='asap'){
+		        		if(vm.product=='asap'|| vm.product == "yy"){
+		        			
+		        			vm.carTypelist1 = vm.deleteTexi( res.result['1'].price.default ); //该服务支持的车型数组
 		        			
 		        		}
 		        		vm.carTypelist = res.result['1'].price.default; //该服务支持的车型数组
+		        		
+		        		
+		        		
+		        		
 		        		console.log(vm.carTypelist )
-		        		vm.swiperArr = vm.makeSwiperData(vm.carTypelist);
+		        		vm.swiperArr = vm.makeSwiperData(vm.carTypelist);  //构造轮播图需要的数据
 		        		vm.$nextTick(function(){
-		        			
 		        			vm.initSwiper();
 		        		})
 		        	}
@@ -364,8 +367,6 @@ new Vue({
 					for(var id in carTypeObj){//车型对象只有一个属性，就是车型id，该属性值是：分段计费数组
 						var segmentArr = carTypeObj[id]; //分段计费数组；
 					}
-					var segmentobj = segmentArr[0]; 
-					segmentobj.imgsrc = 'https://i2.yongche.name/media' + segmentobj.image_id;
 					swiperArr.push(segmentArr[0]); //取第一个分段对象
 				})
 				//console.log(swiperArr);
@@ -377,14 +378,29 @@ new Vue({
 		dealHash:function(){ //处理hash携带的数据
 			//hash #bj_asap_79   #bj_jsj  #bj_rm_1406  
 			var hashArr  = location.hash.slice(1).split('_');
-			this.city = hashArr[0];
-			this.product = hashArr[1];
-			this.carId = hashArr[2];
-		    if(this.product == "rm") { //热门线路
-		    	if(!this.carId){ this.product = "sz" }
-		    	this.fixed_id = this.carId;
-		    	this.carId = hashArr[3];
-		    }
+			this.city = hashArr[0]; //城市简码
+			this.carId = hashArr[2]; //车型id
+		    var product = hashArr[1]; //服务类型简码
+		    if(product == 'asap' || product == 'yy' || product == 'sz') { //马上用车、预约用车、时租
+            	this.product = 'asap';
+	       	} else if(product == 'jsj' || product == 'sj' || product == 'jj') { //接送机
+	            this.product = 'jsj';
+	        } else if(product == 'rz' || product == 'qrz' || product == 'brz') { //日租、半日租
+	            this.product = 'rz';
+	        } else if(product == 'rm') { //热门线路
+	            this.product = hashArr[2] ? 'rm' : 'asap' ;  //如果有专线id，就是rm类型，如果专线id为空，就是默认asap类型
+	            this.fixed_id = hashArr[2];  //此时这个值是专线id
+	            this.carId = hashArr[3];	//此时这个值是车型id
+	        }
+		},
+		deleteTexi:function(arr){//去掉租出车
+			arr.forEach(function(e,idx){
+				if(e['78']){ //78是出租车id
+                    arr.splice(idx,1);
+                    return;
+                }
+			})
+			return arr;
 		},
 		timeFormatter:function (str) { //分段时间数据格式化
 	        return str.substring(0,2) + ':' + str.substring(2,4);
