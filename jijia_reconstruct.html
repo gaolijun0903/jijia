@@ -19,15 +19,13 @@ body { background: #fafafa; font-family: Helvetica Neue, Helvetica, Arial, sans-
 ul,li{	list-style: none;}
 
 .wait { background-color: #eee; transition:opacity .3s linear;}
-#app{
-	
-}   
+#app{ font-family: monospace; }   
 .headerwrapper{ width: 100%; height: 4.59rem; padding-top: 0.5rem;background: #FFFFFF;} 	
 .headerwrapper .rm-title{ text-align: center; font-size: 0.28rem; line-height: 0.8rem; color: #323232; }
-.headerwrapper .tab-type{ margin: 0 auto;width: 4.0rem;height: 0.8rem;background: #F5F5F5;border-radius: 0.08rem;} 
-.headerwrapper .tab-type .tabitem{ display: inline-block; width: 48%; text-align: center; font-size: 0.28rem; line-height: 0.8rem; color: #969696; }
+.headerwrapper .tab-type{ position:relative; margin: 0 auto;width: 4.0rem;height: 0.8rem;background: #F5F5F5;border-radius: 0.08rem;} 
+.headerwrapper .tab-type .tabitem{ display: inline-block; width: 50%; text-align: center; font-size: 0.28rem; line-height: 0.8rem; color: #969696; }
 .headerwrapper .tab-type .tabitem.active{ color: #323232; } 
-.headerwrapper .tab-type .splitline{ display: inline-block;vertical-align: middle; width: 0.02rem ; height: 0.4rem; background: #C8C8C8;}
+.headerwrapper .tab-type .splitline{position: absolute; left: 50%; top: 0.2rem; width: 0.02rem ; height: 0.4rem; background: #C8C8C8;}
 .swiper-container{width: 100%; overflow: hidden;} 
 .headerwrapper .swiper-container .swiper-wrapper .swiper-slide { height: 100%; overflow: hidden;padding-top: 0.4rem;}
 .swiper-container .swiper-wrapper img{display: block; width: 5.0rem; margin:0 auto; } 
@@ -35,33 +33,38 @@ ul,li{	list-style: none;}
 .swiper-container .swiper-wrapper .title span{ color: #323232; font-size: 0.32rem; }
 .swiper-container .swiper-button-next, .swiper-container .swiper-button-prev { background-size: 0.2rem 0.4rem; }
 
-.mainwrapper{ margin-top: 0.48rem;}
-.mainwrapper .tab-weekend{margin: 0 auto 0.32rem; width: 3.20rem; color: #969696;}
-.mainwrapper .tab-weekend .tabitem{display: inline-block; width: 48%;}
+.mainwrapper .tab-weekend{margin: 0 auto; padding-top: 0.32rem; width: 3.20rem; color: #969696;}
+.mainwrapper .tab-weekend .tabitem{display: inline-block; width: 47%; height: 0.72rem; line-height: 0.72rem;}
 .mainwrapper .tab-weekend .tabitem.active{color: #323232;}
 .mainwrapper .tab-weekend .tabitem.active .border{width: 80%; height: 0.04rem; border-radius: 0.02rem; background: #323232; margin: 0 auto;}
-.mainwrapper .tab-weekend .tabitem .words{text-align: center; line-height: 0.28rem; font-size: 0.28rem; margin-bottom: 0.16rem;}
+.mainwrapper .tab-weekend .tabitem .words{text-align: center; font-size: 0.28rem;}
 
 .mainwrapper .feelistwrapper{padding: 0 0.60rem;}
-.mainwrapper .listitem .itemtitle{margin-bottom: 0.2rem; font-size: 0.28rem; line-height: 0.28rem; color: #323232; zoom:1;}
-.mainwrapper .listitem .itemdesc{ font-size: 0.24rem; line-height: 0.34rem; color: #969696;} 
-.mainwrapper .listitem .segmentlist{font-size: 0.24rem; line-height: 0.34rem; color: #969696;}
-.mainwrapper .listitem .segmentlist .segmentitem{margin-bottom: 0.16rem; padding-left: 0.12rem; zoom:1;} 
+.mainwrapper .listitem .itemtitle{padding: 0.3rem 0 0.12rem; font-size: 0.28rem; line-height: 0.28rem; color: #323232; zoom:1;}
+.mainwrapper .listitem .itemdesc{padding: 0.1rem 0 0.06rem; font-size: 0.24rem; line-height: 0.34rem; color: #969696; text-align: justify;} 
+.mainwrapper .listitem .segmentlist{font-size: 0.24rem; line-height: 0.24rem; color: #969696;}
+.mainwrapper .listitem .segmentlist .segmentitem{ padding: 0.1rem 0 0 0.12rem; zoom:1;} 
 /*清除浮动代码*/
 .mainwrapper .baselist .listitem .itemtitle:after{display:block;clear:both;content:"";visibility:hidden;height:0}
 .mainwrapper .baselist .listitem .segmentlist .segmentitem:after{ display:block;clear:both;content:"";visibility:hidden;height:0}
 .mainwrapper .baselist .listitem .item-l{float: left; }
 .mainwrapper .baselist .listitem .item-r{float: right; text-align: right;}
-.mainwrapper .otherlist .listitem .itemdesc{margin-bottom: 0.4rem; }
+.mainwrapper .otherlist { padding-bottom: 1.2rem; }
+.mainwrapper .feelistwrapper .airportname{ padding-top: 0.4rem; text-align: center; font-size: 0.34rem; }
 
-.mainwrapper .linewrapper{margin: 0.18rem auto 0.4rem; text-align: center;}
+.mainwrapper .linewrapper{ text-align: center; padding-top: 0.3rem;}
 .mainwrapper .linewrapper p{display: inline-block; vertical-align: middle; color: #969696; font-size: 0.28rem; line-height: 0.28rem;}
 .mainwrapper .linewrapper .hrline{width: 1.8rem; height: 0.01rem; background: #969696;}
 .mainwrapper .linewrapper .lineword{padding: 0 0.32rem;}
 
+.wait{ width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 10; background-color: #fff; z-index: 99999}
+.wait { background-color: #eee; transition:opacity .3s linear;}
+.wait img {display: block; margin: 60% auto; width: 20%; height: auto;}
+
     </style>
 </head>
 <body>
+	<div class="wait"></div>
 	<div id="app" class="appwrapper" v-cloak>	
 		<section class="headerwrapper">
 			<div class="tab-type" v-if="product!='rm'">
@@ -84,19 +87,19 @@ ul,li{	list-style: none;}
 		</section>
 		<section class="mainwrapper">
 			<div class="tab-weekend" v-if="product=='asap'">
-				<div class="tabitem" :class="{'active': curDateType=='default'}" idx = "0" @click="dateTypeTab('default')">
-    				<div class="words">普通</div>
-    				<div class="border"></div>
-    			</div>
-    			<div class='tabitem' :class="{'active': curDateType=='weekend'}" idx = "1" @click="dateTypeTab('weekend')">
-    				<div class="words">休息日</div>
-    				<div class="border"></div>
-    			</div>
+				<div class="tabitem" :class="{'active': curDateType=='default'}" @click="dateTypeTab('default')">
+	    				<div class="words">普通</div>
+	    				<div class="border"></div>
+	    			</div>
+	    			<div class='tabitem' :class="{'active': curDateType=='weekend'}" @click="dateTypeTab('weekend')">
+	    				<div class="words">休息日</div>
+	    				<div class="border"></div>
+	    			</div>
 			</div>
 			
 			<div class="feelistwrapper">
 				<section>
-					<ul class="baselist">
+					<ul class="baselist" v-if="product!='jsj'">
 						<li class="listitem" v-if="product=='asap'">
 							<div class="itemtitle">
 								<div class="item-l">起步费</div>
@@ -114,7 +117,7 @@ ul,li{	list-style: none;}
 							<section v-if="is_kilo_segment=='0'"> <!--不分时段-->
 								<div class="itemtitle">
 									<div class="item-l"><span v-if="product!='asap'">超出套餐</span>里程费</div>
-									<div class="item-r">{{segment0.fee_per_kilometer1}}元 /公里</div>
+									<div class="item-r">{{segment0.fee_per_kilometer1}}元/公里</div>
 								</div>
 							</section>
 							<section  v-if="is_kilo_segment=='1'"> <!--分时段-->
@@ -126,7 +129,7 @@ ul,li{	list-style: none;}
 										<li class="segmentitem" v-for="(segmentObj,idx) in segmentArr">
 											<div class="item-l" v-if="idx==0">普通时段</div>
 											<div class="item-l" v-if="idx!=0">{{segmentObj.seg_time}}</div>
-											<div class="item-r">{{segmentObj.fee_per_kilometer1}}元 /公里</div>
+											<div class="item-r">{{segmentObj.fee_per_kilometer1}}元/公里</div>
 										</li>
 									</ul>
 								</div>
@@ -136,7 +139,7 @@ ul,li{	list-style: none;}
 							<section v-if="is_time_segment=='0'"> <!--不分时段-->
 								<div class="itemtitle">
 									<div class="item-l"><span v-if="product!='asap'">超出套餐</span>时长费</div>
-									<div class="item-r">{{segment0.fee_per_minute1}}元 /分钟</div>
+									<div class="item-r">{{segment0.fee_per_minute1}}元/分钟</div>
 								</div>
 							</section>
 							<section  v-if="is_time_segment=='1'"> <!--分时段-->
@@ -148,7 +151,7 @@ ul,li{	list-style: none;}
 										<li class="segmentitem" v-for="(segmentObj,idx) in segmentArr">
 											<div class="item-l" v-if="idx==0">普通时段</div>
 											<div class="item-l" v-if="idx!=0">{{segmentObj.seg_time}}</div>
-											<div class="item-r">{{segmentObj.fee_per_minute1}}元 /分钟</div>
+											<div class="item-r">{{segmentObj.fee_per_minute1}}元/分钟</div>
 										</li>
 									</ul>
 								</div>
@@ -158,7 +161,7 @@ ul,li{	list-style: none;}
 							<section v-if="is_longdistance_segment=='0'"> <!--不分时段-->
 								<div class="itemtitle">
 									<div class="item-l">长途附加费</div>
-									<div class="item-r">{{segment0.fee_per_deadhead_kilometer1}}元 /公里</div>
+									<div class="item-r">{{segment0.fee_per_deadhead_kilometer1}}元/公里</div>
 								</div>
 								<div class="itemdesc">超出{{segment0.free_long_distance_kilometer1}}公里后，加收长途服务费用。</div>
 							</section>
@@ -172,41 +175,68 @@ ul,li{	list-style: none;}
 										<li class="segmentitem" v-for="(segmentObj,idx) in segmentArr">
 											<div class="item-l" v-if="idx==0">普通时段</div>
 											<div class="item-l" v-if="idx!=0">{{segmentObj.seg_time}}</div>
-											<div class="item-r">{{segmentObj.fee_per_deadhead_kilometer1}}元 /公里</div>
+											<div class="item-r">{{segmentObj.fee_per_deadhead_kilometer1}}元/公里</div>
 										</li>
 									</ul>
 								</div>
 							</section>
 						</li>
 					</ul>
+					
+					<ul v-if="product=='jsj'">
+						<li class="airportitem" v-for="airport in newAirportArr">
+							<div class="airportname">{{airport.airport_name}}</div>
+							<ul class="baselist">
+								<li class="listitem">
+									<div class="itemtitle">
+										<div class="item-l">最低消费</div>
+										<div class="item-r">{{airport.min_fee1}}元(包含 {{airport.distance1 }}公里 {{airport.time_length1}})</div>
+									</div>
+								</li>
+								<li class="listitem">
+									<div class="itemtitle">
+										<div class="item-l">超出套餐里程费</div>
+										<div class="item-r">{{airport.fee_per_kilometer1}}元 /公里</div>
+									</div>
+								</li>
+								<li class="listitem">
+									<div class="itemtitle">
+										<div class="item-l">超出套餐时长费</div>
+										<div class="item-r">{{airport.fee_per_minute1}}元 /分钟</div>
+									</div>
+								</li>
+								<li class="listitem">
+									<div class="itemtitle">
+										<div class="item-l">长途附加费</div>
+										<div class="item-r">{{airport.fee_per_deadhead_kilometer1}}元 /公里</div>
+									</div>
+									<div class="itemdesc">超出{{airport.free_long_distance_kilometer1}}公里后，加收长途服务费用。</div>
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</section>	
-				
 				
 				<section>
 					<div class="linewrapper">
 						<span>
-							<p class="hrline"></p>
-							<p class="lineword">其他费用</p>
-							<p class="hrline"></p>
+							<p class="hrline"></p><p class="lineword">其他费用</p><p class="hrline"></p>
 						</span>
 					</div>
 					<ul class="otherlist">
 						<li class="listitem">
 							<dt class="itemtitle">议价费用</dt>
 	            			<dd class="itemdesc">根据用车需求的不同时段，乘客可以选择对该订单进行加价或减价，在用车高峰时段或者遇到特殊天气，司机较少，对订单加价，鼓励司机更快接单；在非高峰期时段，司机较多，对订单减价，节约乘客的出行成本。</dd>
-	
 						</li>
 						<li class="listitem">
 							<dt class="itemtitle">高速费</dt>
 	           				<dd class="itemdesc">在高速公路（包括机场高速）行驶所产生的费用，由各地高速路管理部门收取。</dd>
-	
 						</li>
 						<li class="listitem">
 							<dt class="itemtitle">停车费</dt>
 	           				<dd class="itemdesc">司机按约定时间到达后因等待乘客上车而产生的泊车费用，按实际发生费用收取。</dd>
-	
 						</li>
-						<li class="listitem">
+						<li class="listitem" v-if="is_kilo_segment==0 && is_time_segment==0 && is_longdistance_segment==0">
 							<dt class="itemtitle">夜间服务费</dt>
 	                		<dd class="itemdesc">23:00至次日5:00之间的用车，需要收取夜间服务费，易达车型0.5元/分钟、舒适、商务、豪华1元/分钟。</dd>
 						</li>
@@ -233,9 +263,6 @@ ul,li{	list-style: none;}
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js'></script>
     <script type="text/javascript" src='https://cdn.bootcss.com/vue/2.5.16/vue.min.js'></script>
 <script type="text/javascript">
-	
-    
-    
 new Vue({
   	el: '#app',
 	data:{
@@ -247,33 +274,32 @@ new Vue({
 		carId:'',  //url中车型id，37易达，5商务，2舒适，3豪华
 		fixed_id:'', //热门专线id
 		dataRes:'', //接口返回的数据
-		productTypeArr:'', //服务类型数组(17马上,1预约)(7接机,8送机)(11半日租,12日租)(13凤凰汇专线)
+		productTypeArr:[], //服务类型数组(17马上,1预约)(7接机,8送机)(11半日租,12日租)(13凤凰汇专线)
 		
 		curProductTypeId:'', //tab切换后，当前服务类型
 		curCarTypeid:'', //轮播切换后,当前车型
 		curDateType:'', //日期切换后，当前时间类型（普通、休息日）
 		
 		carTypeSwiper:'', //轮播图swiper对象
-		carTypelist:[], //
+		carTypelist:[], //某服务支持的车型数组，为构造轮播图使用
 		swiperArr:[],  //车型轮播图所需数据数组
-		segmentArr:[], //分段数组
-		segment0:'', //分段数据的第一条
+		segmentArr:[], //某车型的分段数组
+		segment0:'', //某车型的分段数据的第一条
 		is_kilo_segment:0,  //里程费是否分段  1-分段； 0-不分段；
 		is_time_segment:0,  //时长费是否分段  1-分段； 0-不分段；
 		is_longdistance_segment:0,  //长途附加费是否分段  1-分段； 0-不分段；
 		
 		rmTitle:'', //热门线路的标题
 		
+		airportArr:[], //原始的机场数组
+		newAirportArr:[], //新构造的指定车型的机场数组
 		
 	  	showToast:false,  //吐司提示框的展示与否  false-不展示，true-展示
 	  	toastMsg:'' //吐司提示信息
   	},
-	computed:{
-		
-	},
 	mounted: function(){
-		this.dealHash();
-	  	this.initData();
+		this.dealHash();//处理URL的hash中携带的参数
+	  	this.initData();//初始化接口数据
 	},
 	methods:{
 	  	initData:function (){
@@ -285,44 +311,35 @@ new Vue({
 		        url: vm.urlDomain + vm.api,
 		        data: params,
 		        success:function(data){
-		        	console.log(data)
+		        //	console.log(data)
+		        if(!!!data.result) {
+		            alert('系统错误，请稍后再试');
+		            return false;
+		        }
 		        	if(data.code == 200 && data.result){
+		        		$('.wait').fadeOut(800);
 		        		vm.dataRes = data.result;
 		        		if(vm.product=='asap'){//马上用车、预约用车、时租
 		        			vm.filterCarType(data.result);//过滤支持的车型（易达、舒适、商务、豪华）
 		        			vm.curProductTypeId = '17'; //设置当前服务类型-默认-马上用车
 		        			vm.curDateType = 'default'; //设置当前日期类型-默认-普通
-		        			vm.curCarTypeid = vm.carId  ? vm.carId : '37'; //设置当前车型-如果参数有使用参数，默认37易达
-		        			//从普通日期里取车型数据，为构造轮播图使用
-		        			vm.carTypelist = data.result[vm.curProductTypeId].price.default ; //该服务支持的车型数组
-		        			
-		        			vm.findSegmentArr(vm.curProductTypeId,vm.curCarTypeid,vm.curDateType);//找到指定车型的分段数组 
-            				vm.setData();//设置分段数据
-            				
-		        		}else if(vm.product=='jsj'){//接送机、接机、送机
-		        			
+		        			vm.carTypelist = data.result[vm.curProductTypeId].price.default ; //该服务支持的车型数组，为构造轮播图使用
 		        		}else if(vm.product=='rm'){ //热门专线
 		        			for(var pId in vm.dataRes){//目前只有一条
-		        				vm.curProductTypeId = pId; //默认展示-
-		        				vm.rmTitle = vm.dataRes[pId].name;
+		        				vm.curProductTypeId = pId; //设置当前服务类型
+		        				vm.rmTitle = vm.dataRes[pId].name;  //热门线路名称
 		        			}
-		        			vm.curCarTypeid = vm.carId  ? vm.carId : '3'; //目前只有豪华
-		        			vm.carTypelist = data.result[vm.curProductTypeId].price; //该服务支持的车型数组
-		        			//找到指定车型的分段数组 //初始化用-马上用车-普通日
-		        			vm.findSegmentArr(vm.curProductTypeId,vm.curCarTypeid);
-		        			//设置分段数据
-            				vm.setData();
+		        			vm.carTypelist = data.result[vm.curProductTypeId].price; //该服务支持的车型数组，为构造轮播图使用
 		        		}else if(vm.product=='rz'){ //日租、半日租、全日租
 		        			vm.curProductTypeId = '12'; //默认展示-日租
-		        			vm.curCarTypeid = vm.carId  ? vm.carId : '2';
-		        			vm.carTypelist = data.result[vm.curProductTypeId].price; //该服务支持的车型数组
-		        			
-		        			//找到指定车型的分段数组 //初始化用-马上用车-普通日
-		        			vm.findSegmentArr(vm.curProductTypeId,vm.curCarTypeid);
-		        			//设置分段数据
-            				vm.setData();
+		        			vm.carTypelist = data.result[vm.curProductTypeId].price; //该服务支持的车型数组，为构造轮播图使用
+		        		}else if(vm.product=='jsj'){//接送机、接机、送机
+		        			vm.curProductTypeId = '7'; //设置当前服务类型-默认-接机
+		        			vm.airportArr = vm.dataRes[vm.curProductTypeId]; //每个机场支持的车型数可能不同，需找出支持车型最多的机场
+		        			vm.carTypelist = vm.findMaxCarTypeList(vm.airportArr);//找出该服务支持车型最多的车型数组，为构造轮播图使用
 		        		}
-		        		
+		        		vm.curCarTypeid = vm.setCurCarTypeid(vm.carTypelist); //设置当前车型
+					vm.setData();//初始化数据或者各种切换后的更改数据
 		        		//console.log(vm.carTypelist )
 		        		vm.swiperArr = vm.makeSwiperData(vm.carTypelist);  //构造轮播图需要的数据
 		        		vm.$nextTick(function(){
@@ -337,52 +354,95 @@ new Vue({
 		        }
 		    })
 		},
-		
-		findSegmentArr:function(productTypeId,carTypeId,date){//找到指定车型的分段数组，（服务类型id、车型id、是否休息日）
+		setData:function(){ //初始化数据或者各种切换后的更改数据
+			if(this.product == 'jsj'){//接送机
+            		this.makeNewAirportArr(); //根据当前服务类型、当前车型，组装指定的机场数组
+           	}else { //马上用车、日租、热门
+            		this.findSegmentArr(); //找到指定车型的分段数组，并展示 
+            }
+		},
+		makeNewAirportArr:function(){//组装指定车型的机场数组  //改方法仅用于jsj数据
 			var vm = this;
-			if(vm.product == 'jsj'){ //接送机
-				
-			}else if(vm.product == 'asap'){
-				var carTypeArr = vm.dataRes[productTypeId].price[date];
+			var newAirportArr = [];
+			var airportArr = vm.dataRes[vm.curProductTypeId]; //当前服务类型的机场数据
+			airportArr.forEach(function(airportObj,idx){
+				airportObj.price.forEach(function(carTypeObj,idx){
+					for(var carTypeid in carTypeObj){
+						if(vm.curCarTypeid == carTypeid){//找到当前车型的计费数据
+							var feedata = vm.dataFormater(carTypeObj[carTypeid][0]);
+							feedata.airport_name = airportObj.name;  //添加机场名称字段
+							newAirportArr.push(feedata);
+						}
+					}
+				})
+			})
+			vm.newAirportArr = newAirportArr;  //当前服务类型，当前车型的机场数组数据
+		},
+		setCurCarTypeid:function(carTypelist){ //设置当前车型
+			var curCarTypeid;
+			if(this.carId){ //URL参数中携带的车型ID指定为当前车型
+    				curCarTypeid = this.carId;
+    			}else{//默认取第一个车型ID作为当前车型
+    				for(var carTypeid in carTypelist[0]){
+    					curCarTypeid = carTypeid;
+    				}
+    			}
+    			return curCarTypeid;
+		},
+		findMaxCarTypeList:function(airportArr){//找出该服务支持车型最多的车型数组，为构造轮播图使用  
+			//默认接机和送机分别支持的车型数是一样的，如果不一样，轮播无法使用
+			var maxCarType = 0; //机场支持车型数的最大值
+			var maxCarTypeIdx = 0;  //支持车型数最多的机场索引
+			airportArr.forEach(function(airport,idx){
+				if(maxCarType <= airport.price.length){
+					maxCarType = airport.price.length;
+					maxCarTypeIdx = idx;
+				}
+			})
+			return airportArr[maxCarTypeIdx].price;  
+		},
+		findSegmentArr:function(){//根据当前服务类型及当前车型，找到指定的车型的分段数组 //该方法使用于!jsj数据
+			var vm = this;
+			if(vm.product == 'asap'){
+				var carTypeArr = vm.dataRes[vm.curProductTypeId].price[vm.curDateType];
 			}else{
-				var carTypeArr = vm.dataRes[productTypeId].price;
+				var carTypeArr = vm.dataRes[vm.curProductTypeId].price;
 			}
-			
 			carTypeArr.forEach(function(carTypeObj,idx) {//遍历车型数组
                 for(var id in carTypeObj){//遍历车型对象的属性值，只有一个就是carid，此循环只会走1遍
-                	if(carTypeId == id){//找到指定车型
-                		vm.segmentArr = carTypeObj[id]; //指定车型的分段计费数组；
-                	}
+	                	if(vm.curCarTypeid == id){//找到轮播的当前车型对应的数据
+	                		vm.segmentArr = carTypeObj[id]; //指定车型的分段计费数组；
+	                	}
                 }
             });
+            vm.segmentOrNo();//判断是否分段展示，并进行格式化
 		},
-		setData:function(){ //设置展示数据
+		segmentOrNo:function(){ //判断是否分段展示，并进行格式化
 			var vm = this;
             vm.segment0 = vm.segmentArr[0]; //分段的第一条数据
-            //console.log(vm.segment0);
             if(vm.segmentArr.length == 1){//只有一条
-        		vm.is_kilo_segment = 0;  //里程费是否分段  1-分段； 0-不分段；
-        		vm.is_time_segment = 0;  //时长费
-        		vm.is_longdistance_segment = 0;  //长途附加费
-        		vm.dataFormater(vm.segment0); //格式化数据
-        	}else{//有多个时段数据
-        		vm.segmentArr.forEach(function(segObj,segIdx){//遍历分时段数组
-        			vm.dataFormater(segObj);
-        			if(segIdx>=1){//与第一个普通时段对比
-        				if(segObj.fee_per_kilometer != vm.segment0.fee_per_kilometer){ //如果不等于第一条数据，就要分段
-        					vm.is_kilo_segment = 1;  //里程费是否分段  1-分段； 0-不分段；
-        				}
-        				if(segObj.fee_per_minute != vm.segment0.fee_per_minute){ //如果不等于第一条数据，就要分段
-        					vm.is_time_segment = 1;  //时长费是否分段  1-分段； 0-不分段；
-        				}
-        				if(segObj.fee_per_deadhead_kilometer != vm.segment0.fee_per_deadhead_kilometer){ //如果不等于第一条数据，就要分段
-        					vm.is_longdistance_segment = 1;  //长途附加费是否分段  1-分段； 0-不分段；
-        				}
-        			}
-            	})
-        	}
+	        		vm.is_kilo_segment = 0;  //里程费是否分段  1-分段； 0-不分段；
+	        		vm.is_time_segment = 0;  //时长费
+	        		vm.is_longdistance_segment = 0;  //长途附加费
+	        		vm.dataFormater(vm.segment0); //格式化费用数据
+	        	}else{//有多个时段数据
+	        		vm.segmentArr.forEach(function(segObj,segIdx){//遍历分时段数组
+	        			vm.dataFormater(segObj); //格式化费用数据
+	        			if(segIdx>=1){//与第一个普通时段对比
+	        				if(segObj.fee_per_kilometer != vm.segment0.fee_per_kilometer){ //如果不等于第一条数据，就要分段
+	        					vm.is_kilo_segment = 1;  //里程费是否分段  1-分段； 0-不分段；
+	        				}
+	        				if(segObj.fee_per_minute != vm.segment0.fee_per_minute){ //如果不等于第一条数据，就要分段
+	        					vm.is_time_segment = 1;  //时长费是否分段  1-分段； 0-不分段；
+	        				}
+	        				if(segObj.fee_per_deadhead_kilometer != vm.segment0.fee_per_deadhead_kilometer){ //如果不等于第一条数据，就要分段
+	        					vm.is_longdistance_segment = 1;  //长途附加费是否分段  1-分段； 0-不分段；
+	        				}
+	        			}
+	            	})
+	        	}
 		},
-		dataFormater:function(segObj){ //格式化费用数据
+		dataFormater:function(segObj){ //费用数据-格式化函数
 			segObj.min_fee1 = segObj.min_fee/100 ;  //  最低消费
 			segObj.fee_per_kilometer1 = segObj.fee_per_kilometer/100 ; // 里程费
 			segObj.fee_per_minute1 = segObj.fee_per_minute/100 ; // 时长费
@@ -396,19 +456,24 @@ new Vue({
 				segObj.time_length1 = this.minfeeTimeFormater(segObj.time_length);  //时租-最低消费-535元（包含100公里8小时）
 				segObj.night_service_fee1 = segObj.night_service_fee/100 ; // 夜间服务费
 			}
+			return segObj;
 		},
-		segTimeFormater:function(sTime,eTime){ //组装时段字符串
-			var str1 = sTime.substring(0,2) + '：' + sTime.substring(2,4);
-			var str2 = eTime.substring(0,2) + '：' + eTime.substring(2,4);
+		segTimeFormater:function(sTime,eTime){ //分段时间段-格式化函数
+			var str1 = sTime.substring(0,2) + ':' + sTime.substring(2,4);
+			var str2 = eTime.substring(0,2) + ':' + eTime.substring(2,4);
 			return str1 + '-' + str2; 
 		},
-		minfeeTimeFormater:function(time){ //组装字符串 //时租-最低消费-535元（包含100公里8小时）
+		minfeeTimeFormater:function(time){ //最低消费说明-格式化函数 //时租-最低消费-535元（包含100公里8小时）
 			var str = '';
 			var h = Math.floor(time/60/60);
 	        var m = Math.floor(time/60)%60;
 	        if(m == 0) {
 	            str = h + '小时';
-	        } else {str = h + '小时'+m+'分'}
+	        }else if(h == 0){
+	        		str = m + '分';
+	        	}else {
+	        		str = h + '小时'+ m +'分';
+	        	}
 	        return str;
 		},
 		makeSwiperData:function(carTypeArr){//构造轮播图数据，参数：某服务支持的车型数组
@@ -434,53 +499,28 @@ new Vue({
                     prevEl: '.swiper-button-prev',
                 },
                 on: {
-                    slideChangeTransitionEnd: function(event){
-                        vm.curCarTypeid =  $('.swiper-slide').eq(this.activeIndex).attr('id');
-						//vm.logTabId();//打印切换id--测试用
-                        //console.log(this.activeIndex+"=="+carTypeid)
-                        //找到指定车型的分段数组 
-                        if(vm.product == 'asap' || vm.product == 'rz'){
-                        	vm.findSegmentArr(vm.curProductTypeId,vm.curCarTypeid,vm.curDateType);
-		        			//设置分段数据
-	        				vm.setData();
-                        }else if(vm.product == 'jsj'){
-                        	
-                        }
-		        			
+                    slideChangeTransitionEnd: function(event){ //轮播图切换-车型切换
+                        vm.curCarTypeid =  $('.swiper-slide').eq(this.activeIndex).attr('id'); //设置当前车型ID
+                        //vm.logTabId();//打印切换id--测试用
+						vm.setData(); //初始化数据或者各种切换后的更改数据
                     }
                 }
             });
 		},
 		logTabId:function(){//打印切换id--测试用
-			console.log('curDateType='+vm.curDateType);
-			console.log('curProductTypeId='+vm.curProductTypeId);
-			console.log('curCarTypeid='+vm.curCarTypeid);
+			console.log('curDateType='+this.curDateType);
+			console.log('curProductTypeId='+this.curProductTypeId);
+			console.log('curCarTypeid='+this.curCarTypeid);
 		},
 		productTypeTab:function(id){//服务类型切换
-			var vm = this;
-			vm.curProductTypeId = id;
+			this.curProductTypeId = id;  //设置当前服务类型
 			//vm.logTabId();//打印切换id--测试用
-			//找到指定车型的分段数组 
-			if(vm.product == 'jsj'){//接送机
-            	
-           	}else { //马上用车、日租、热门
-            	vm.findSegmentArr(vm.curProductTypeId,vm.curCarTypeid,vm.curDateType);
-    			//设置分段数据
-				vm.setData();
-            }
+			this.setData(); //初始化数据或者各种切换后的更改数据
 		},
-		dateTypeTab:function(dateType){//日期切换——普通、休息日
-			var vm = this;
-			vm.curDateType = dateType;
+		dateTypeTab:function(dateType){//日期切换——普通、休息日 //目前只有asap服务类型有时间切换功能
+			this.curDateType = dateType;
 			//vm.logTabId();//打印切换id--测试用
-			//找到指定车型的分段数组 
-			if(vm.product == 'jsj'){//接送机
-            	
-           	}else { //马上用车、日租、热门
-            	vm.findSegmentArr(vm.curProductTypeId,vm.curCarTypeid,vm.curDateType);
-    			//设置分段数据
-				vm.setData();
-            }
+            this.setData(); //初始化数据或者各种切换后的更改数据
 		},
 		filterCarType:function(res){//马上用车组合需要过滤出与线上一致的四种车型
 			for(var i in res){ //遍历当前服务类型(17-马上用车，1-预约用车)
@@ -505,18 +545,23 @@ new Vue({
 			this.city = hashArr[0]; //城市简码
 			this.carId = hashArr[2]; //车型id
 		    var product = hashArr[1]; //服务类型简码
-		    if(product == 'asap' || product == 'yy' || product == 'sz') { //时租
-            	this.product = 'asap';
-            	this.productTypeArr = [{id:'17',name:'马上用车'},{id:'1',name:'预约用车'}];
+		    if(product == 'asap' || product == 'yy' || product == 'sz' || !product) { //时租 、如果参数没有
+	            	this.product = 'asap';
+	            	this.productTypeArr = [{id:'17',name:'马上用车'},{id:'1',name:'预约用车'}];
 	       	} else if(product == 'jsj' || product == 'sj' || product == 'jj') { 
 	            this.product = 'jsj';
-            	this.productTypeArr = [{id:'7',name:'接机'},{id:'8',name:'送机'}];
+            		this.productTypeArr = [{id:'7',name:'接机'},{id:'8',name:'送机'}];
 	        } else if(product == 'rz' || product == 'qrz' || product == 'brz') {
 	            this.product = 'rz';
-            	this.productTypeArr = [{id:'12',name:'日租'},{id:'11',name:'半日租'}];
+            		this.productTypeArr = [{id:'12',name:'日租'},{id:'11',name:'半日租'}];
 	        } else if(product == 'rm') { //热门线路
-	        	this.productTypeArr = [];
-	            this.product = hashArr[2] ? 'rm' : 'asap' ;  //如果有专线id，就是rm类型，如果专线id为空，就是默认asap类型
+	            if(hashArr[2]){ //如果有专线id，就是rm类型
+		            	this.product = 'rm';
+		            	this.productTypeArr = [];
+	            }else{ //如果专线id为空，就是默认asap类型
+	            		this.product = 'asap';
+		            	this.productTypeArr = [{id:'17',name:'马上用车'},{id:'1',name:'预约用车'}];
+	            }
 	            this.fixed_id = hashArr[2];  //此时这个值是专线id
 	            this.carId = hashArr[3];	//此时这个值是车型id
 	        }
