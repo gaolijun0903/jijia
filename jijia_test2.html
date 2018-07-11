@@ -58,6 +58,7 @@
     <script type="text/javascript" src='https://cdn.bootcss.com/vue/2.5.16/vue.min.js'></script>
 </head>
 <body>
+<!--<p>重构前的页面</p>-->
 <div class="wait"></div>
 <div class="box" id='app'>
     <div class="newLife" v-if="product!='rm'">
@@ -365,9 +366,9 @@
                     cont1 : carTypeJson[product]['cont'].split(',')[0], //“里程费”or“超出套餐里程费”
                     cont2 : carTypeJson[product]['cont'].split(',')[1], //“时长费”or“超出套餐时长费”
 
-                    count_join1 : false, //里程费是否分时段，false分段
-                    count_join2 : false, //时长费是否分时段，false分段
-                    count_join3 : false, //长途费是否分时段，false分段
+                    count_join1 : false, //里程费是否分时段，false不分段
+                    count_join2 : false, //时长费是否分时段，false不分段
+                    count_join3 : false, //长途费是否分时段，false不分段
 
                     product : product, //服务类型（asap\jsj\rz）
                     name : '', //轮播位置展示的车型分类：易达、舒适、豪华、商务
@@ -407,14 +408,15 @@
                         if(data.length==1){ //如果只有一条分段记录
                         	o = false;
                         }else{ //有多条分段记录时，要判断每条记录里的--1、里程费是否一致，2、时长费是否一致，3、长途附加费是否一致
-                        	arr.push(data.splice(0,1)[0]);//第一条分段的费用作为参照
+                        	arr.push(data.splice(0,1)[0]);
                         	data.forEach(function(e,i){
-	                            if(e.kliPrice != arr[0].kliPrice || e.kliPrice != _this[type]){ //只要有一条与第一条不一致，就要分段
+	                            if(e.kliPrice != arr[0].kliPrice || e.kliPrice != _this[type]){
 	                                o = false;
 	                            }
 	                        });
                         }
-                        this[num] = o ? true : false;  //this.count_join1 = false,就是分段
+
+                        this[num] = o ? true : false;
                     }
                 }
             })
