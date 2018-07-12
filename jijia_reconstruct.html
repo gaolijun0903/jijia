@@ -419,12 +419,11 @@ new Vue({
 		segmentOrNo:function(){ //判断是否分段展示，合并数据相同，并进行格式化
 			var vm = this;
             vm.segment0 = vm.segmentArr[0]; //分段的第一条数据
-            if(vm.segmentArr.length == 1){//只有一条
-        		vm.is_kilo_segment = 0;  //里程费是否分段  1-分段； 0-不分段；
-        		vm.is_time_segment = 0;  //时长费
-        		vm.is_longdistance_segment = 0;  //长途附加费
-        		vm.dataFormater(vm.segment0); //格式化费用数据
-        	}else{//有多个时段数据
+    		vm.is_kilo_segment = 0;  //里程费是否分段  1-分段； 0-不分段；
+    		vm.is_time_segment = 0;  //时长费
+    		vm.is_longdistance_segment = 0;  //长途附加费
+    		vm.dataFormater(vm.segment0); //格式化费用数据
+        	if(vm.segmentArr.length != 1){//有多个时段数据
         		var kiloSegArr=[], timeSegArr=[], longdistanceSegArr=[];
     			kiloSegArr.push(vm.segment0); //里程费数组
 				timeSegArr.push(vm.segment0); //时长费
@@ -565,7 +564,7 @@ new Vue({
 	            this.fixed_id = hashArr[2];  //此时这个值是专线id
 	            this.carId = hashArr[3];	//此时这个值是车型id
 	        }
-	        if(this.carId == 79) {
+	        if(this.carId == 79 || this.carId == 78) { //出租车的指向易达
 		        this.carId = 37;
 		    } else if(this.carId == 80) {
 		        this.carId = 2;
